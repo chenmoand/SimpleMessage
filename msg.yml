@@ -1,0 +1,19 @@
+#点击事件  "OPEN_URL":在用户的浏览器打开指定URL
+#(cevent) "OPEN_FILE": 在用户的电脑打开指定文件
+#         "RUN_COMMAND": 让用户运行指令
+#         "SUGGEST_COMMAND": 在用户的输入框设置文字
+#         "CHANGE_PAGE": 改变书本的页码
+#移动事件 "SHOW_TEXT": 显示一个文本
+#(hevent) "SHOW_ACHIEVEMENT": 显示一个成就及其介绍
+#         "SHOW_ITEM": 显示一个物品的名字和其他信息
+#         "SHOW_ENTITY": 显示一个实体的名字，ID和其他信息
+#   QWQ我感觉也就几个有用
+demo:
+  msg: "这是一个消息\n"
+  cevent: "OPEN_URL"
+  click: "http://www.baidu.com"
+  hover: "SHOW_TEXT"
+  hevent: "&6这居然是一个链接????"
+demo2:
+  msg: "这是第二条消息"
+  

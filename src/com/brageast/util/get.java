@@ -19,7 +19,10 @@ public class get {
 			sj.put(key, jm);
 		}
 	}
-//	public JsonMessage getJm() {
+//	private String setPlaceholders(String str, YamlConfiguration msg) {
 //		
+////		PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayers(), msg.getString(str));
+//		return str;
 //	}
+
 }

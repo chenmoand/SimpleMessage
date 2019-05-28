@@ -9,24 +9,25 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 public class AnnouncementTiming {
-	private BukkitTask r;
-	private YamlConfiguration config;
-	private long time;
-	private int i = 1;
-	private int t = 1;
-	private HashMap<Integer, JsonMessage> m2 = new HashMap<>();
+	private static BukkitTask r;
+	private static YamlConfiguration config;
+	private static long time;
+	private static int i = 1;
+	private static int t = 1;
+	private static HashMap<Integer, JsonMessage> m2 = new HashMap<>();
+	private static Plugin plugin;
 			
-	public AnnouncementTiming(Plugin plugin, YamlConfiguration config) {
-		this.config = config;
-		this.time = this.config.getLong("Time") > 0L ? this.config.getLong("Time") : 1L;
-//		JsonMessage j = get.sj.get("demo").append(get.sj.get("demo2"));
+	public static void setAtime(Plugin plugin, YamlConfiguration config) {
+		AnnouncementTiming.plugin = plugin;
+		AnnouncementTiming.config = config;
+		AnnouncementTiming.time = AnnouncementTiming.config.getLong("Time") > 0L ? AnnouncementTiming.config.getLong("Time") : 1L;
+		run();
+	}
+	public static void run() {
 		getJsonMessages();
-		this.r = new BukkitRunnable() {
-			
+		r = new BukkitRunnable() {
 			public void run() {
 				for(Player p : Bukkit.getOnlinePlayers()) {
-//					j.say(p);
-//					System.out.println(i);
 					if(i < t) {
 						t = 1;
 						m2.get(t).say(p);
@@ -34,16 +35,11 @@ public class AnnouncementTiming {
 						m2.get(t).say(p);
 						t++;
 					}
-//					m2.get(2).say(p);
-					
-//					System.out.println(config.getString("Message.1"));
-//					System.out.println(m2);
-//					System.out.println(get.sj);
 				}
 			}
 		}.runTaskTimerAsynchronously(plugin, 0L, time * 10L);
 	}
-	public void getJsonMessages() {
+	public static void getJsonMessages() {
 				while(true) {
 					String s = config.getString("Message." + i);
 					onProcessing(s, i);
@@ -54,20 +50,30 @@ public class AnnouncementTiming {
 				}
 	}
 	//起名字困难户
-	public void onProcessing(String s, int i2) {
+	public static void onProcessing(String s, int i2) {
 		
-		JsonMessage jms = new JsonMessage("");
+		JsonMessage jms = new JsonMessage();
 		String[] strarray = s.split(",");
 		
 		for(String str : strarray) {
-//			System.out.println(get.sj.get(str));
+			if(str.startsWith("!")) {
+				jms.append(str);
+			}
 			jms.append(get.sj.get(str));
-//			System.out.println(str);
-		}
+		} 
 		
 		m2.put(i2, jms);
 	}
-	public void stop() {
-		r.cancel();
+	public static void stop() {
+		//究极停止
+//		r.cancel();
+//		m2.clear();
+//		get.sj.clear();
+
+//		plugin.saveConfig();
+//		plugin.reloadConfig();
+		plugin.onDisable();
+		plugin.onEnable();
+//		plugin.en
 	}
 }

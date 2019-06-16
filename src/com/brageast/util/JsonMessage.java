@@ -65,7 +65,7 @@ public class JsonMessage {
 	public JsonMessage say(Player p) {
 		for(int j = 0; j < txt.size() - 1; j++) {
 			if(txt.get(j).startsWith("!")) {
-				msg.set(j, new TextComponent(new PlayerStatus(p,txt.get(j)).setStatus().replace("&", "§")));
+				msg.set(j, new TextComponent(new PlayerStatus(p,txt.get(j)).getStatus().replace("&", "§")));
 			}
 		};
 		TextComponent[] m = msg.toArray(new TextComponent[msg.size()]);

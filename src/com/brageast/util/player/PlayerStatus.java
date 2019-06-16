@@ -11,7 +11,7 @@ public class PlayerStatus {
 		p.getWorld().getName();
 	}
 
-	public String setStatus() {
+	public String getStatus() {
 		String vlaue = str.replace("!", "");
 		switch (vlaue) {
 		case "player_name":
@@ -26,6 +26,8 @@ public class PlayerStatus {
 			return p.isFlying()+"";
 		case "player_worldname":
 			return p.getWorld().getName();
+		case "tpa_time_wait":
+			return  "0";
 		default:
 			return "[?]";
 		}

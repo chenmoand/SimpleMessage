@@ -8,12 +8,25 @@
 #         "SHOW_ITEM": 显示一个物品的名字和其他信息
 #         "SHOW_ENTITY": 显示一个实体的名字，ID和其他信息
 #   QWQ我感觉也就几个有用
-demo:
-  msg: "这是一个消息\n"
-  cevent: "OPEN_URL"
-  click: "http://www.baidu.com"
+tpa:
+  msg: "&8&l[&4同意&8&l]"
+  cevent: "RUN_COMMAND"
+  click: "/smt agree"
   hover: "SHOW_TEXT"
-  hevent: "&6这居然是一个链接????"
-demo2:
-  msg: "这是第二条消息"
-  
+  hevent: "&6点击同意"
+tpa2:
+  msg: "&8&l[&4拒绝&8&l]"
+  cevent: "RUN_COMMAND"
+  click: "/smt disagree"
+  hover: "SHOW_TEXT"
+  hevent: "&6点击拒绝"
+guoqi.msg: "&3您的消息过期了"
+demo1.msg: "&8来自"
+demo2.msg: "&8的tpa消息"
+my.msg: "这是一个自定义的消息"
+pluginname:
+  msg: "§7[§3SimpleMessage§7]§a §4> §r"
+hh:
+  msg: "\n"
+sj:
+  msg: "     "

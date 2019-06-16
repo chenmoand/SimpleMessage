@@ -7,27 +7,41 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.brageast.Command.SmCmd;
+import com.brageast.Command.Smtpa;
+import com.brageast.listener.PlayInput;
+import com.brageast.listener.onPlay;
 import com.brageast.util.AnnouncementTiming;
 import com.brageast.util.get;
 import com.brageast.util.papi;
+import com.brageast.util.file.getYml;
+import com.brageast.util.player.Ez;
+import com.brageast.util.player.bstats;
 
 public class main extends JavaPlugin {
-//	private File f = this.getDataFolder();
 	private YamlConfiguration config;
 	private YamlConfiguration msg;
 	public void onEnable() {
-//		isPapi();
-		onCreateYmlFile();
-		get.msg(msg);
-		AnnouncementTiming.setAtime(this, config);
-		Bukkit.getPluginCommand("smsg").setExecutor(new SmCmd(config, msg));
-//		Bukkit.getPluginManager().registerEvents(new onPlay(config, msg), this);
+		pluginReady();
+		Bukkit.getPluginCommand("smsg").setExecutor(new SmCmd());
+		Bukkit.getPluginManager().registerEvents(new PlayInput(), this);
+		Bukkit.getPluginCommand("smt").setExecutor(new Smtpa(config, msg));
+		Bukkit.getPluginManager().registerEvents(new onPlay(config, msg), this);
+		
+	    
 		
 	}
 	public void onDisable() {
 //		System.out.println("关闭了?????");
 
     }
+	public void pluginReady() {
+		onCreateYmlFile();
+		get.msg(msg);
+		AnnouncementTiming.setAtime(this, config);
+		getYml.append(config, msg);
+		new bstats(this);
+		Ez.Load();
+	}
 	public void onCreateYmlFile() {
 		 config = createYmlFile("config.yml");
 		 msg = createYmlFile("msg.yml");

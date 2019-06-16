@@ -15,7 +15,7 @@ public class AnnouncementTiming {
 	private static int i = 1;
 	private static int t = 1;
 	private static HashMap<Integer, JsonMessage> m2 = new HashMap<>();
-	private static Plugin plugin;
+	public static Plugin plugin;
 			
 	public static void setAtime(Plugin plugin, YamlConfiguration config) {
 		AnnouncementTiming.plugin = plugin;
@@ -37,7 +37,7 @@ public class AnnouncementTiming {
 					}
 				}
 			}
-		}.runTaskTimerAsynchronously(plugin, 0L, time * 10L);
+		}.runTaskTimerAsynchronously(plugin, 0L, time * 20L);
 	}
 	public static void getJsonMessages() {
 				while(true) {

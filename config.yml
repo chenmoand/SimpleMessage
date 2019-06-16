@@ -1,9 +1,25 @@
-#PlayJoin: 'demo'
 #每次循环公告, 1 = 1秒
-Time: 15
-
-
+Time: 60
 # 以此类推 1 -> 2 -> ... ->n 不要断数字1跳到3就无法识别了
 Message:
-  1: "demo,demo2"
-    
+  1: "pluginname"
+  2: "pluginname"
+
+tpa:
+  #发送消息有效时间, 1 = 1秒
+  EffectiveTime: 60
+  #同意请求等待时间, 1 = 1秒
+  WaitingTime: 3
+  ##关于msg的各种消息
+  msg:
+    remind:
+      #是否启用再次提醒功能
+      enable: true
+      #在发送请求后如果在没看到的情况下几秒钟再次提醒
+      time: 15
+      #发送的消息 需要配置msg.yml
+      xiaoxi: "demo1,!player_name,demo2,tpa,sj,tpa2"
+      #邀请的
+      yaoqing: "demo1,!player_name,demo2,tpa,sj,tpa2"
+    #消息过期 需要配置msg.yml
+    pastdue: "guoqi"

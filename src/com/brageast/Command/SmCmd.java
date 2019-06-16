@@ -8,19 +8,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import com.brageast.util.AnnouncementTiming;
 
 public class SmCmd implements CommandExecutor {
-//	private main m = new main();
-	private YamlConfiguration msg;
-	private final String title = "§7[§3simplemessage§7]§a";
-	public SmCmd(YamlConfiguration config, YamlConfiguration msg) {
-		this.msg = msg;
-	}
+private final String title = "§7[§3simplemessage§7]§a";
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
 		if(sender.hasPermission("simplemessage.use")) {
 			if(args[0].equals("reload")) {
 				AnnouncementTiming.stop();
-//				get.msg(msg);
-//				AnnouncementTiming.run();;
 				sender.sendMessage(title + " §b》§7  重载成功");
 			} else {
 				onHelp(sender);

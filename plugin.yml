@@ -1,4 +1,4 @@
-name: SimpleMessage
+name: SimpleMessages
 main: com.brageast.main
 version: 1.1
 
@@ -8,6 +8,11 @@ commands:
   smsg:
     description: "主要指令"
     usgae: /<command>
+  smt:
+    description: "主要指令"
+    usgae: /<command>
 permission:
   simplemessage.use:
-    default: false
+    default: true
+  simplemessage.use.tpa:
+    default: true

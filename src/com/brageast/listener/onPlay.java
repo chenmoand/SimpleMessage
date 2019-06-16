@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.brageast.util.Action;
 import com.brageast.util.JsonMessage;
+import com.brageast.util.doTransfer;
 
 public class onPlay implements Listener {
 	private YamlConfiguration config;
@@ -20,7 +21,7 @@ public class onPlay implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		new JsonMessage(config.getString("PlayJoin")).setHoverEvent(Action.getHoverEvent("SHOW_TEXT"), "&6哈哈哈")
-		.append(config.getString("PlayJoin")).setHoverEvent(Action.getHoverEvent("SHOW_TEXT"), "&7哈哈哈").say(p);
+		doTransfer.pstatus.put(p.getDisplayName(), 0);
+
 	}
 }

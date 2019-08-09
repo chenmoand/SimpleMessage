@@ -22,10 +22,13 @@ public class main extends JavaPlugin {
 	private YamlConfiguration msg;
 	public void onEnable() {
 		pluginReady();
-		Bukkit.getPluginCommand("smsg").setExecutor(new SmCmd());
-		Bukkit.getPluginManager().registerEvents(new PlayInput(), this);
-		Bukkit.getPluginCommand("smt").setExecutor(new Smtpa(config, msg));
 		Bukkit.getPluginManager().registerEvents(new onPlay(config, msg), this);
+		Bukkit.getPluginCommand("smsg").setExecutor(new SmCmd());
+		if(config.getBoolean("tpa.switch") == false) {
+			Bukkit.getPluginManager().registerEvents(new PlayInput(), this);
+			Bukkit.getPluginCommand("smt").setExecutor(new Smtpa(config, msg));
+			getLogger().info("插件自带tpa已经关闭,如需请在config中tpa.switch 改为true");
+		}
 		
 	    
 		

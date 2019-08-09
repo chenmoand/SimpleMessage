@@ -6,6 +6,7 @@ Message:
   2: "pluginname"
 
 tpa:
+  switch: false
   #发送消息有效时间, 1 = 1秒
   EffectiveTime: 60
   #同意请求等待时间, 1 = 1秒
